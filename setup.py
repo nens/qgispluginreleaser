@@ -36,5 +36,8 @@ setup(name='qgispluginreleaser',
       extras_require={'test': tests_require},
       entry_points={
           'console_scripts': [
-          ]},
-      )
+          ],
+          'zest.releaser.releaser.after_checkout': [
+              'release_plugin = qgispluginreleaser.extension:entry_point',
+          ]
+      })
