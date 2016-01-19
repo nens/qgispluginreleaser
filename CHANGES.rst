@@ -2,7 +2,7 @@ Changelog of qgispluginreleaser
 ===================================================
 
 
-0.1 (unreleased)
+0.1 (2016-01-19)
 ----------------
 
 - Initial project structure created with nensskel.
