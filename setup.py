@@ -10,11 +10,13 @@ long_description = '\n\n'.join([
 
 install_requires = [
     'setuptools',
+    'zest.releaser',
     ],
 
 tests_require = [
-    'nose',
     'coverage',
+    'mock',
+    'nose',
     ]
 
 setup(name='qgispluginreleaser',
@@ -38,6 +40,6 @@ setup(name='qgispluginreleaser',
           'console_scripts': [
           ],
           'zest.releaser.releaser.after_checkout': [
-              'release_plugin = qgispluginreleaser.extension:entry_point',
+              'release_plugin = qgispluginreleaser.extension:run',
           ]
       })
