@@ -10,7 +10,7 @@ def prerequisites_ok():
             return True
 
 
-def run(context):
+def create_zipfile(context):
     """This is the actual zest.releaser entry point
 
     Relevant items in the context dict:

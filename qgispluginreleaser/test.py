@@ -1,4 +1,4 @@
-from qgispluginreleaser.entry_point import run
+from qgispluginreleaser.entry_point import create_zipfile
 from qgispluginreleaser.entry_point import prerequisites_ok
 from unittest import TestCase
 
@@ -16,6 +16,10 @@ class InstallationTestCase(TestCase):
     def test_prerequisites_ok(self):
         # Should return false for us.
         self.assertFalse(prerequisites_ok())
+
+    def test_stops_if_prerequisites_wrong(self):
+        # Should return false for us.
+        self.assertFalse(create_zipfile({}))
 
 
 def return_ok():
@@ -35,7 +39,7 @@ class EntryPointTestCase(TestCase):
 
     def test_makefile_call(self):
         with mock.patch('subprocess.call') as mocked:
-            run({})
+            create_zipfile({})
             self.assertTrue(mocked.called)
 
     def test_ziprename(self):
@@ -46,7 +50,7 @@ class EntryPointTestCase(TestCase):
         with mock.patch('subprocess.call'):
             with mock.patch('glob.glob', mock_glob):
                 with mock.patch('shutil.copy') as mocked:
-                    run({'version': '1.0',
+                    create_zipfile({'version': '1.0',
                          'workingdir': '/tmp'})
                     mocked.assert_called_with(
                         'something.zip',
