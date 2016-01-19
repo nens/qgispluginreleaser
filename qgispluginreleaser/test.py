@@ -1,4 +1,5 @@
 from qgispluginreleaser.entry_point import run
+from qgispluginreleaser.entry_point import prerequisites_ok
 from unittest import TestCase
 
 import mock
@@ -12,8 +13,25 @@ class InstallationTestCase(TestCase):
             group='zest.releaser.releaser.after_checkout'))
         self.assertTrue('qgispluginreleaser.entry_point' in str(entry_points))
 
+    def test_prerequisites_ok(self):
+        # Should return false for us.
+        self.assertFalse(prerequisites_ok())
+
+
+def return_ok():
+    return True
+
 
 class EntryPointTestCase(TestCase):
+
+    def setUp(self):
+        self.patcher = mock.patch(
+            'qgispluginreleaser.entry_point.prerequisites_ok',
+            return_ok)
+        self.patcher.start()
+
+    def tearDown(self):
+        self.patcher.stop()
 
     def test_makefile_call(self):
         with mock.patch('subprocess.call') as mocked:

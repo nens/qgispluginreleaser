@@ -4,6 +4,12 @@ import shutil
 import subprocess
 
 
+def prerequisites_ok():
+    if os.path.exists('metadata.txt'):
+        if 'qgisMinimumVersion' in open('metadata.txt').read():
+            return True
+
+
 def run(context):
     """This is the actual zest.releaser entry point
 
@@ -23,6 +29,8 @@ def run(context):
         Original working directory
 
     """
+    if not prerequisites_ok():
+        return
     # Create a zipfile.
     subprocess.call(['make', 'zip'])
     for zipfile in glob.glob('*.zip'):
