@@ -41,5 +41,11 @@ setup(name='qgispluginreleaser',
           ],
           'zest.releaser.releaser.after_checkout': [
               'release_plugin = qgispluginreleaser.entry_point:create_zipfile',
-          ]
+          ],
+          'zest.releaser.prereleaser.middle': [
+              'prerelease_plugin = qgispluginreleaser.entry_point:fix_version',
+          ],
+          'zest.releaser.postreleaser.middle': [
+              'postrelease_plugin = qgispluginreleaser.entry_point:fix_version',
+          ],
       })

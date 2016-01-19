@@ -1,7 +1,10 @@
+from __future__ import unicode_literals
+
 import glob
 import os
 import shutil
 import subprocess
+import time
 
 
 def prerequisites_ok():
@@ -39,3 +42,21 @@ def create_zipfile(context):
         target = os.path.join(context['workingdir'], new_name)
         shutil.copy(zipfile, target)
         print("Copied %s to %s" % (zipfile, target))
+
+
+def fix_version(context):
+    """Fix the version in metadata.txt
+
+    Relevant context dict item for both prerelease and postrelease:
+    ``new_version``.
+
+    """
+    if not prerequisites_ok():
+        return
+    lines = open('metadata.txt', 'rU').readlines()
+    for index, line in enumerate(lines):
+        if line.startswith('version'):
+            new_line = 'version=%s\n' % context['new_version']
+            lines[index] = new_line
+    time.sleep(1)
+    open('metadata.txt', 'w').writelines(lines)
