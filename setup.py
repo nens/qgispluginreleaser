@@ -40,6 +40,6 @@ setup(name='qgispluginreleaser',
           'console_scripts': [
           ],
           'zest.releaser.releaser.after_checkout': [
-              'release_plugin = qgispluginreleaser.extension:run',
+              'release_plugin = qgispluginreleaser.entry_point:run',
           ]
       })
