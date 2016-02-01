@@ -38,7 +38,7 @@ def create_zipfile(context):
     subprocess.call(['make', 'zip'])
     for zipfile in glob.glob('*.zip'):
         first_part = zipfile.split('.')[0]
-        new_name = "%s-%s.zip" % (first_part, context['version'])
+        new_name = "%s.%s.zip" % (first_part, context['version'])
         target = os.path.join(context['workingdir'], new_name)
         shutil.copy(zipfile, target)
         print("Copied %s to %s" % (zipfile, target))

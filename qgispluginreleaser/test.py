@@ -54,4 +54,4 @@ class EntryPointTestCase(TestCase):
                          'workingdir': '/tmp'})
                     mocked.assert_called_with(
                         'something.zip',
-                        '/tmp/something-1.0.zip')
+                        '/tmp/something.1.0.zip')
