@@ -2,7 +2,7 @@ Changelog of qgispluginreleaser
 ===================================================
 
 
-0.2 (unreleased)
+0.2 (2016-02-01)
 ----------------
 
 - Qgis expects zip filenames to use a dot as name/version separator instead of
