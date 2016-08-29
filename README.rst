@@ -1,7 +1,7 @@
 qgispluginreleaser
 ==========================================
 
-Add-on for zest.releaser for releasing qgis plugins.
+Add-on for zest.releaser for releasing QGIS plugins.
 
 Zest.releaser can be extended, see its `entrypoints documentation
 <http://zestreleaser.readthedocs.org/en/latest/entrypoints.html>`_.
@@ -12,7 +12,13 @@ What we do:
   and copy it to the current directory. You can scp it to a server afterwards.
 
 - In the "prerelease" and "postrelease" steps we change the version number in
-  the qgis ``metadata.txt`` file.
+  the (mandatory) QGIS ``metadata.txt`` file.
+
+Note: a QGIS plugin doesn't have a ``setup.py``, so you'll need to add a
+``version.txt`` or ``version.rst`` or ``VERSION`` file so that zest.releaser
+recognizes the current directory as a releasable project and so that it can
+find the version number somewhere. Simply put the version number ("1.2") by
+itself on the first line. A newline at the end is fine.
 
 
 Installation
