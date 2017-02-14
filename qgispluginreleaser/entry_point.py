@@ -5,11 +5,12 @@ import os
 import shutil
 import subprocess
 import time
-
+import codecs
 
 def prerequisites_ok():
     if os.path.exists('metadata.txt'):
-        if 'qgisMinimumVersion' in open('metadata.txt').read():
+        if 'qgisMinimumVersion' in codecs.open(
+                'metadata.txt', 'r', 'utf-8').read():
             return True
 
 
@@ -53,10 +54,10 @@ def fix_version(context):
     """
     if not prerequisites_ok():
         return
-    lines = open('metadata.txt', 'rU').readlines()
+    lines = codecs.open('metadata.txt', 'rU', 'utf-8').readlines()
     for index, line in enumerate(lines):
         if line.startswith('version'):
             new_line = 'version=%s\n' % context['new_version']
             lines[index] = new_line
     time.sleep(1)
-    open('metadata.txt', 'w').writelines(lines)
+    codecs.open('metadata.txt', 'w', 'utf-8').writelines(lines)
