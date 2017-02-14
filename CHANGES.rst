@@ -5,7 +5,7 @@ Changelog of qgispluginreleaser
 0.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Use the codec package in conjunction with "utf8" to read and write files.
 
 
 0.2 (2016-02-01)
