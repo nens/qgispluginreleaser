@@ -2,7 +2,7 @@ Changelog of qgispluginreleaser
 ===================================================
 
 
-1.1 (unreleased)
+1.1 (2020-05-25)
 ----------------
 
 - Allow the ``metadata.txt`` to also be one subdirectory deeper.
