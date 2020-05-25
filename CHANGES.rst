@@ -5,7 +5,7 @@ Changelog of qgispluginreleaser
 1.1 (unreleased)
 ----------------
 
-- Allow the metadata.txt to also be in one subdirectory deeper.
+- Allow the ``metadata.txt`` to also be in one subdirectory deeper.
 
 
 1.0 (2017-06-20)

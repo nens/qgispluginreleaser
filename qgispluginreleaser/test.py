@@ -1,5 +1,5 @@
 from qgispluginreleaser.entry_point import create_zipfile
-from qgispluginreleaser.entry_point import metadata_file
+from qgispluginreleaser.entry_point import find_metadata_file
 from unittest import TestCase
 
 import mock
@@ -15,7 +15,7 @@ class InstallationTestCase(TestCase):
 
     def test_metadata_file(self):
         # Should return false for us.
-        self.assertFalse(metadata_file())
+        self.assertFalse(find_metadata_file())
 
     def test_stops_if_prerequisites_wrong(self):
         # Should return false for us.

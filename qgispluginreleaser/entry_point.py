@@ -8,7 +8,7 @@ import time
 import codecs
 
 
-def metadata_file():
+def find_metadata_file():
     """Return path to the first found 'metadata.txt'
 
     Will look into current folder and one subdirectory deeper.
@@ -44,8 +44,8 @@ def create_zipfile(context):
         Original working directory
 
     """
-    metadata = metadata_file()
-    if not metadata:
+    metadata_file = find_metadata_file()
+    if not metadata_file:
         return
     # Create a zipfile.
     subprocess.call(['make', 'zip'])
@@ -64,13 +64,13 @@ def fix_version(context):
     ``new_version``.
 
     """
-    metadata = metadata_file()
-    if not metadata:
+    metadata_file = find_metadata_file()
+    if not metadata_file:
         return
-    lines = codecs.open(metadata, 'rU', 'utf-8').readlines()
+    lines = codecs.open(metadata_file, 'rU', 'utf-8').readlines()
     for index, line in enumerate(lines):
         if line.startswith('version'):
             new_line = 'version=%s\n' % context['new_version']
             lines[index] = new_line
     time.sleep(1)
-    codecs.open(metadata, 'w', 'utf-8').writelines(lines)
+    codecs.open(metadata_file, 'w', 'utf-8').writelines(lines)
