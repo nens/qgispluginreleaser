@@ -2,6 +2,12 @@ Changelog of qgispluginreleaser
 ===================================================
 
 
+1.2 (unreleased)
+----------------
+
+- Nothing changed yet.
+
+
 1.1 (2020-05-25)
 ----------------
 
