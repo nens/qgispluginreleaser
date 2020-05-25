@@ -1,5 +1,5 @@
 from qgispluginreleaser.entry_point import create_zipfile
-from qgispluginreleaser.entry_point import prerequisites_ok
+from qgispluginreleaser.entry_point import metadata_file
 from unittest import TestCase
 
 import mock
@@ -13,9 +13,9 @@ class InstallationTestCase(TestCase):
             group='zest.releaser.releaser.after_checkout'))
         self.assertTrue('qgispluginreleaser.entry_point' in str(entry_points))
 
-    def test_prerequisites_ok(self):
+    def test_metadata_file(self):
         # Should return false for us.
-        self.assertFalse(prerequisites_ok())
+        self.assertFalse(metadata_file())
 
     def test_stops_if_prerequisites_wrong(self):
         # Should return false for us.
@@ -23,14 +23,14 @@ class InstallationTestCase(TestCase):
 
 
 def return_ok():
-    return True
+    return "metadata.txt"
 
 
 class EntryPointTestCase(TestCase):
 
     def setUp(self):
         self.patcher = mock.patch(
-            'qgispluginreleaser.entry_point.prerequisites_ok',
+            'qgispluginreleaser.entry_point.metadata_file',
             return_ok)
         self.patcher.start()
 
