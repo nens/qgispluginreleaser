@@ -17,12 +17,12 @@ class InstallationTestCase(TestCase):
         # Should return false for us.
         self.assertFalse(find_metadata_file())
 
-    def test_stops_if_prerequisites_wrong(self):
+    def test_stops_if_no_metadata_file(self):
         # Should return false for us.
         self.assertFalse(create_zipfile({}))
 
 
-def return_ok():
+def return_metadata():
     return "metadata.txt"
 
 
@@ -31,7 +31,7 @@ class EntryPointTestCase(TestCase):
     def setUp(self):
         self.patcher = mock.patch(
             'qgispluginreleaser.entry_point.metadata_file',
-            return_ok)
+            return_metadata)
         self.patcher.start()
 
     def tearDown(self):
