@@ -526,7 +526,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "zest-releaser", specifier = ">=9.6.2" }]
+requires-dist = [{ name = "zest-releaser", specifier = ">=9" }]
 
 [package.metadata.requires-dev]
 dev = [
