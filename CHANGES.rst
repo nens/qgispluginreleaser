@@ -2,7 +2,7 @@ Changelog of qgispluginreleaser
 ===================================================
 
 
-1.2 (unreleased)
+2.0 (2025-06-18)
 ----------------
 
 - Use file mode ``r`` instead of ``rU`` to support Python 3.11+.
