@@ -24,7 +24,6 @@ prerelease_plugin = "qgispluginreleaser.entry_point:fix_version"
 [project.entry-points."zest.releaser.postreleaser.middle"]
 postrelease_plugin = "qgispluginreleaser.entry_point:fix_version"
 
-
 [tool.ruff]
 target-version = "py310"
 

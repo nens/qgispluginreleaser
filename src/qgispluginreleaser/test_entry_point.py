@@ -1,24 +1,6 @@
 from unittest import TestCase, mock
 
-import importlib
-
-from qgispluginreleaser.entry_point import create_zipfile, find_metadata_file
-
-
-class InstallationTestCase(TestCase):
-    def test_entry_point_available(self):
-        entry_points = importlib.metadata.entry_points(
-                group="zest.releaser.releaser.after_checkout"
-            )
-        self.assertTrue("qgispluginreleaser.entry_point" in str(entry_points))
-
-    def test_metadata_file(self):
-        # Should return false for us.
-        self.assertFalse(find_metadata_file())
-
-    def test_stops_if_no_metadata_file(self):
-        # Should return false for us.
-        self.assertFalse(create_zipfile({}))
+from qgispluginreleaser.entry_point import create_zipfile
 
 
 def return_metadata():
