@@ -1,5 +1,7 @@
 import importlib
 
+from qgispluginreleaser.entry_point import create_zipfile, find_metadata_file
+
 
 def test_entry_point_available():
     entry_points = importlib.metadata.entry_points(

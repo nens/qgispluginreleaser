@@ -1,33 +1,32 @@
-from unittest import TestCase, mock
+from unittest import mock
 
 from qgispluginreleaser.entry_point import create_zipfile
 
 
-def return_metadata():
+def _return_metadata():
     return "metadata.txt"
 
 
-class EntryPointTestCase(TestCase):
-    def setUp(self):
-        self.patcher = mock.patch(
-            "qgispluginreleaser.entry_point.metadata_file", return_metadata
-        )
-        self.patcher.start()
+def _mock_glob(something):
+    return ["something.zip"]
 
-    def tearDown(self):
-        self.patcher.stop()
 
-    def test_makefile_call(self):
+def test_makefile_call():
+    with mock.patch(
+        "qgispluginreleaser.entry_point.find_metadata_file", _return_metadata
+    ):
         with mock.patch("subprocess.call") as mocked:
+            # ^^^ handles "make zip" call
             create_zipfile({})
-            self.assertTrue(mocked.called)
+            assert mocked.called
 
-    def test_ziprename(self):
-        def mock_glob(something):
-            return ["something.zip"]
 
-        with mock.patch("subprocess.call"):
-            with mock.patch("glob.glob", mock_glob):
+def test_ziprename():
+    with mock.patch(
+        "qgispluginreleaser.entry_point.find_metadata_file", _return_metadata
+    ):
+        with mock.patch("subprocess.call"):  # "make zip"
+            with mock.patch("glob.glob", _mock_glob):
                 with mock.patch("shutil.copy") as mocked:
                     create_zipfile({"version": "1.0", "workingdir": "/tmp"})
                     mocked.assert_called_with("something.zip", "/tmp/something.1.0.zip")
