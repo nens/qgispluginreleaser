@@ -1,3 +1,27 @@
+[build-system]
+requires = ["setuptools>=70"]
+
+[project]
+name = "qgispluginreleaser"
+description = "Add-on for zest.releaser for releasing qgis plugins"
+authors = [
+    {name = "Reinout van Rees", email = "reinout.vanrees@nelen-schuurmans.nl"},
+]
+readme = "README.rst"
+license = {text = "GPL"}
+requires-python = ">=3.10"
+version = "1.2.dev0"
+
+[project.entry-points."zest.releaser.releaser.after_checkout"]
+release_plugin = "qgispluginreleaser.entry_point:create_zipfile"
+
+[project.entry-points."zest.releaser.prereleaser.middle"]
+prerelease_plugin = "qgispluginreleaser.entry_point:fix_version"
+
+[project.entry-points."zest.releaser.postreleaser.middle"]
+postrelease_plugin = "qgispluginreleaser.entry_point:fix_version"
+
+
 [tool.ruff]
 target-version = "py310"
 
