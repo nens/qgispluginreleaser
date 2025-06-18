@@ -17,8 +17,8 @@ def find_metadata_file():
         if "qgisMinimumVersion" in codecs.open(path[0], "r", "utf-8").read():
             return path[0]
     elif len(path) > 1:
-        print("Multiple 'metadata.txt files have been found: %s" % path)
-        print("Using the first found file: %s" % path[0])
+        print(f"Multiple 'metadata.txt files have been found: {path}")
+        print(f"Using the first found file: {path[0]}")
         if "qgisMinimumVersion" in codecs.open(path[0], "r", "utf-8").read():
             return path[0]
 
@@ -49,10 +49,10 @@ def create_zipfile(context):
     subprocess.call(["make", "zip"])
     for zipfile in glob.glob("*.zip"):
         first_part = zipfile.split(".")[0]
-        new_name = "%s.%s.zip" % (first_part, context["version"])
+        new_name = "{}.{}.zip".format(first_part, context["version"])
         target = os.path.join(context["workingdir"], new_name)
         shutil.copy(zipfile, target)
-        print("Copied %s to %s" % (zipfile, target))
+        print(f"Copied {zipfile} to {target}")
 
 
 def fix_version(context):
@@ -68,7 +68,7 @@ def fix_version(context):
     lines = codecs.open(metadata_file, "r", "utf-8").readlines()
     for index, line in enumerate(lines):
         if line.startswith("version"):
-            new_line = "version=%s\n" % context["new_version"]
+            new_line = "version={}\n".format(context["new_version"])
             lines[index] = new_line
     time.sleep(1)
     codecs.open(metadata_file, "w", "utf-8").writelines(lines)
