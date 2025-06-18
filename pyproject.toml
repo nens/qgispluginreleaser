@@ -11,6 +11,9 @@ readme = "README.rst"
 license = {text = "GPL"}
 requires-python = ">=3.10"
 version = "1.2.dev0"
+dependencies = [
+    "zest-releaser>=9.6.2",
+]
 
 [project.entry-points."zest.releaser.releaser.after_checkout"]
 release_plugin = "qgispluginreleaser.entry_point:create_zipfile"
@@ -30,3 +33,9 @@ select = ["E4", "E7", "E9", "F", "I", "UP"]
 
 [tool.zest-releaser]
 release = false
+
+[dependency-groups]
+dev = [
+    "mock>=5.2.0",
+    "pytest>=8.4.1",
+]
