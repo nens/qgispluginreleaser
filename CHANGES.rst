@@ -7,6 +7,12 @@ Changelog of qgispluginreleaser
 
 - Use file mode ``r`` instead of ``rU`` to support Python 3.11+.
 
+- Updated the code on the whole to work with newer python versions (replacing
+  ``pkg_resources`` with ``importlib`` for instance).
+
+- Updated the project setup (removed buildout, added pyproject.toml, added github
+  actions, added pre-commit).
+
 
 1.1 (2020-05-25)
 ----------------

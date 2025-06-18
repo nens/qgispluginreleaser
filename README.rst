@@ -30,3 +30,12 @@ normally don't have a full python setup.
 The plugin checks whether there's a ``metadata.txt`` (lowercase) with a
 ``qgisMinimumVersion`` string inside it. If found, the plugin runs. Otherwise
 it stays out of the way. So it should be safe to install globally.
+
+
+Development of the plugin
+-------------------------
+
+Use ``uv`` for installing the project in development. Some commands::
+
+    $ uv run pytest
+    $ pre-commit run --all
