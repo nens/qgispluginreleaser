@@ -67,7 +67,7 @@ def fix_version(context):
     metadata_file = find_metadata_file()
     if not metadata_file:
         return
-    lines = codecs.open(metadata_file, 'rU', 'utf-8').readlines()
+    lines = codecs.open(metadata_file, 'r', 'utf-8').readlines()
     for index, line in enumerate(lines):
         if line.startswith('version'):
             new_line = 'version=%s\n' % context['new_version']
