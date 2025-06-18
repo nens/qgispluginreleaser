@@ -5,7 +5,7 @@ Changelog of qgispluginreleaser
 2.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fixed small problem in administration that prevented a pypi release.
 
 
 2.0 (2025-06-18)
